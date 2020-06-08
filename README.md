@@ -1,5 +1,7 @@
 # nlw-01
 Project coded during the first 'Next Level Week'
+
+ ![Ecoleta](/img/00_ecoleta.gif)
 Hey if you arrived here, I would like to invite you to try this code by yourself, look the info below:
 
 More information about the project, check [here](https://nextlevelweek.com/)
