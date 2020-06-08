@@ -1,7 +1,8 @@
 # nlw-01
 Project coded during the first 'Next Level Week'
+[![Watch the video](/img/play.png)](https://youtu.be/KmSgM8lGXsI)
+![Ecoleta](/img/00_ecoleta.gif)
 
- ![Ecoleta](/img/00_ecoleta.gif)
 Hey if you arrived here, I would like to invite you to try this code by yourself, look the info below:
 
 More information about the project, check [here](https://nextlevelweek.com/)
@@ -56,10 +57,14 @@ cd mobile
 npm install
 npm install expo-cli --global
 ```
+
+Therea only one thing to do and it works pretty weel, got `./mobile/src/Services/apit/ts` and change the `baseURL` to your IP.
+
 Here we are using [Expo](https://expo.io/), a framework and a platform for universal React applications.
 Now let's start the project, type:
+
 ```bash
-expo start
+npm start
 ```
 You gonna need to install the `Expo` app in your phone [here](https://expo.io/learn) you gonna find some help.
 

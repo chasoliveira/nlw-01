@@ -28,12 +28,11 @@ routes.post('/points',
     body: Joi.object().keys({
       name: Joi.string().required(),
       email: Joi.string().required().email(),
-      whatsapp: Joi.string().required().regex(/\(\d{2,}\) \d{4,}\-\d{4}/),
+      whatsapp: Joi.string().required().regex(/\(\d{2,}\) \d{1,} \d{4,}\-\d{4}/),
       latitude: Joi.number().required(),
       longitude: Joi.number().required(),
       city: Joi.string().required(),
       uf: Joi.string().required().max(2),
-      image: Joi.any().required(),
       items: Joi.string().required()
     })
   },{

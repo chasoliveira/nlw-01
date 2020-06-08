@@ -42,21 +42,32 @@ const Detail = () => {
 
   useEffect(() => {
     api.get(`points/${routParams.point_id}`).then((response) => {
-      setData(response.data);
+      console.log(response.data);
+
+      const data = {
+        ...response.data,
+        point: {
+          ...response.data.point,
+          image: `${response.config.baseURL}${response.data.point.image_url}`,
+        },
+      };
+      setData(data);
     });
-  });
+  }, [routParams]);
 
   const onBackNavigateHandler = () => {
     navigation.goBack();
   };
 
   const onClickWhatsAppMessage = () => {
-    Linking.openURL(`whatsapp://send?phone=${data.point.whatsapp}&text=Tenho interese em coleta de resíduos.`);
+    Linking.openURL(
+      `whatsapp://send?phone=${data.point.whatsapp}&text=Tenho interese em coleta de resíduos.`
+    );
   };
 
   const mailComposeHandler = () => {
     MailComposer.composeAsync({
-      subject: 'Interese na Coleta de Resíduos',
+      subject: "Interese na Coleta de Resíduos",
       recipients: [data.point.email],
     });
   };
@@ -84,6 +95,15 @@ const Detail = () => {
           <Text style={styles.addressContent}>
             {data.point.city}-{data.point.uf}
           </Text>
+        </View>
+        <View style={styles.address}>
+          <FontAwesome style={styles.addressTitle} name="whatsapp" size={20} />
+          <Text style={styles.addressContent}>{data.point.whatsapp}</Text>
+        </View>
+
+        <View style={styles.address}>
+          <FontAwesome style={styles.addressTitle} name="envelope" size={20} />
+          <Text style={styles.addressContent}>{data.point.email}</Text>
         </View>
       </View>
       <View style={styles.footer}>

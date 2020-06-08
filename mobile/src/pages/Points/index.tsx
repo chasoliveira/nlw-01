@@ -32,9 +32,9 @@ interface Point {
   longitude: number;
 }
 
-interface Params{
-  uf: string,
-  city: string
+interface Params {
+  uf: string;
+  city: string;
 }
 const Points = () => {
   const [items, setItems] = useState<Item[]>([]);
@@ -45,12 +45,10 @@ const Points = () => {
   ]);
   const [points, setPoints] = useState<Point[]>([]);
 
-  
   const navigation = useNavigation();
   const route = useRoute();
 
   const routeParams = route.params as Params;
-
 
   useEffect(() => {
     api.get<Item[]>("items").then((response) => {
@@ -77,7 +75,7 @@ const Points = () => {
           ...item,
           image_url: `${response.config.baseURL}${item.image_url}`,
         }));
-        setPoints(response.data);
+        setPoints(result);
       });
   }, [selectedItems]);
 
@@ -125,10 +123,9 @@ const Points = () => {
         </Text>
 
         <View style={styles.map}>
-          {initialPosition[0] === 0 && (
+          {initialPosition[0] === 0 ? (
             <ActivityIndicator style={styles.spinner} size="large" />
-          )}
-          {initialPosition[0] !== 0 && (
+          ) : (
             <MapView
               style={styles.map}
               initialRegion={{
