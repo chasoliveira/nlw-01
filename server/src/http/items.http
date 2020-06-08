@@ -1,0 +1,5 @@
+@host = http://localhost:3333
+
+#@name get_all_items
+GET {{host}}/items HTTP/1.1
+content-type: application/json

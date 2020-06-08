@@ -1,0 +1,63 @@
+@host = http://localhost:3333
+
+###
+#@name get_all_points
+GET {{host}}/points HTTP/1.1
+content-type: application/json
+
+###
+#@name get_points_by_id
+GET {{host}}/points/2 HTTP/1.1
+content-type: application/json
+
+###
+#@name get_points_filtered
+GET {{host}}/points?city=Porto Alegre&uf=RS&items=1,2 HTTP/1.1
+content-type: application/json
+
+###
+#@name create_point
+POST {{host}}/points HTTP/1.1
+Content-Type: multipart/form-data; boundary=RestClientBoundary
+Accept: */*
+Cache-Control: no-cache
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+
+--RestClientBoundary
+Content-Disposition: form-data; name="name"
+
+BCD Compras
+--RestClientBoundary
+Content-Disposition: form-data; name="email"
+
+BCDCompras@email.com
+--RestClientBoundary
+Content-Disposition: form-data; name="whatsapp"
+
+(51) 33 5875-998
+--RestClientBoundary
+Content-Disposition: form-data; name="latitude"
+
+-30.0321291
+--RestClientBoundary
+Content-Disposition: form-data; name="longitude"
+
+-51.230911
+--RestClientBoundary
+Content-Disposition: form-data; name="city"
+
+Porto Alegre
+--RestClientBoundary
+Content-Disposition: form-data; name="uf"
+
+RS
+--RestClientBoundary
+Content-Disposition: form-data; name="items"
+
+5,6
+--RestClientBoundary
+Content-Disposition: form-data; name="image"; filename="market.jpg"
+
+< ./image_samples/market.jpg
+--RestClientBoundary--
